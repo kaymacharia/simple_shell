@@ -1,10 +1,12 @@
 #include "shell.h"
 
 /**
- *_eputs - prints an input string
- * @str: the string to be printed
+ * _eputs - Writes a string to standard error
+ * @str: Pointer to the string to be written
  *
- * Return: Nothing
+ * Description: This function writes the string,
+* @str to standard error.
+ * If @str is NULL, the function does nothing.
  */
 void _eputs(char *str)
 {
@@ -20,11 +22,17 @@ void _eputs(char *str)
 }
 
 /**
- * _eputchar - writes the character c to stderr
- * @c: The character to print
+ * _eputchar - Writes a character to standard error
+ * @c: The character to be written
  *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * Return: Always 1 (success)
+ *
+ * Description: This function writes the character ,
+*@c to standard error.
+ * If @c is BUF_FLUSH or if the internal buffer is full,
+* (reached WRITE_BUF_SIZE),
+ * the buffer contents are written to standard,
+* error using the write system call.
  */
 int _eputchar(char c)
 {
@@ -42,13 +50,17 @@ int _eputchar(char c)
 }
 
 /**
- * _putfd - writes the character c to given fd
- * @c: The character to print
- * @fd: The filedescriptor to write to
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
- */
+* _putfd - Writes a character to a file descriptor
+* @c: The character to be written
+* @fd: The file descriptor
+* Return: Always 1 (success)
+* Description: This function writes the character,
+* @c to the file descriptor @fd.
+* If @c is BUF_FLUSH or if the internal buffer is full,
+* (reached WRITE_BUF_SIZE),
+* the buffer contents are written to the file descriptor,
+* using the write system call.
+*/
 int _putfd(char c, int fd)
 {
 	static int i;
@@ -65,11 +77,16 @@ int _putfd(char c, int fd)
 }
 
 /**
- *_putsfd - prints an input string
- * @str: the string to be printed
- * @fd: the filedescriptor to write to
- *
- * Return: the number of chars put
+ * _putsfd - Writes a string to a file descriptor
+ * @str: Pointer to the string to be written
+ * @fd: The file descriptor
+ * Return: The number of characters written
+ * Description: This function writes the string,
+ * @str to the file descriptor @fd.
+ * If @str is NULL, the function returns 0. Otherwise,
+ *it iterates through the string
+ *and calls _putfd for each character,
+ *accumulating the number of characters written.
  */
 int _putsfd(char *str, int fd)
 {
@@ -83,3 +100,4 @@ int _putsfd(char *str, int fd)
 	}
 	return (i);
 }
+
