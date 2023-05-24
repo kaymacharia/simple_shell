@@ -3,11 +3,12 @@
 #define MAX_COMMAND_LENGTH 100
 
 /**
- * Exits the shell
+ * main - Entry point for the shell program
  *
- * This function is for exiting the shell program.
- * It can be called when the user enters the "exit" command.
- * It takes zero arguments and returns an exit status of zero.
+ * Description: Displays a prompt and waits for the user to enter a command.
+ *              The command is executed, and the prompt is displayed again.
+ *              Supports exiting the shell and handles errors.
+ *
  * Return: Always returns 0
  */
 int main(void)
@@ -17,7 +18,7 @@ int main(void)
 
 	while (1)
 	{
-		printf("simple_shell$");
+		printf("simple_shell$ ");
 		fflush(stdout);
 
 		if (fgets(command, MAX_COMMAND_LENGTH, stdin) == NULL)
@@ -49,8 +50,7 @@ int main(void)
 			if (WIFEXITED(status))
 			{
 				int exit_status = WEXITSTATUS(status);
-				printf
-					("Child process exited with status %d\n", exit_status);
+				printf("Child process exited with status %d\n", exit_status);
 			}
 		}
 	}
