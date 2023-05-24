@@ -1,54 +1,16 @@
 #include "shell.h"
-
 /**
- * main - Entry point of the program.
- * @ac: Argument count.
- * @av: Argument vector.
+ * add_sum - Calculates the sum of two integers.
+ * @a: The first integer.
+ * @b: The second integer.
  *
- * Return: 0 on success, 1 on error.
+ * Return: The sum of @a and @b.
  *
- * Description: The main function initializes the necessary variables,
- * opens a file if provided as an argument, populates the environment list,
- * reads command history, and starts the shell. It returns the appropriate
- * exit status.
+ * Description: This function takes two integers @a and @b, and returns
+ * their sum. It uses the addition operator to perform the calculation
+ * and returns the result.
  */
-int main(int ac, char **av)
+int add_sum(int a, int b)
 {
-	info_t info[] = { INFO_INIT };
-	int fd = 2;
-
-	/* Redirect file descriptor using inline assembly */
-	asm (
-		"mov %1, %0\n\t"
-		"add $3, %0"
-		: "=r" (fd)
-		: "r" (fd)
-	);
-
-	if (ac == 2)
-	{
-		fd = open(av[1], O_RDONLY);
-		if (fd == -1)
-		{
-			if (errno == EACCES)
-				exit(126);
-			if (errno == ENOENT)
-			{
-				_eputs(av[0]);
-				_eputs(": 0: Can't open ");
-				_eputs(av[1]);
-				_eputchar('\n');
-				_eputchar(BUF_FLUSH);
-				exit(127);
-			}
-			return (EXIT_FAILURE);
-		}
-		info->readfd = fd;
-	}
-
-	populate_env_list(info);
-	read_history(info);
-	hsh(info, av);
-
-	return (EXIT_SUCCESS);
+	return (a + b);
 }
