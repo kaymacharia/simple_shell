@@ -1,11 +1,12 @@
 #include "shell.h"
 /**
- * sum - adds two numbers
- * @num1: First interger to be added
- * @num2: Second interger to be adedd
- * Return: The total of the sum
+ * add_sum - Calculates the sum of two integers.
+ * @a: The first integer.
+ * @b: The second integer.
+ * Return: The sum of @a and @b.
  */
-int sum(int num1, int num2)
+int add_sum(int a, int b)
 {
-	return (num1 + num2);
+	int sum = a + b;
+	return sum;
 }
