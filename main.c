@@ -4,7 +4,8 @@
  * main - Entry point of the shell program
  * @ac: Number of command-line arguments
  * @av: Array of command-line arguments
- * Return: EXIT_SUCCESS on success, or EXIT_FAILURE on failure
+ * Return: EXIT_SUCCESS on success,
+ * or EXIT_FAILURE on failure
  */
 int main(int ac, char **av)
 {
