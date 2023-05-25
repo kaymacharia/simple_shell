@@ -1,8 +1,8 @@
 #include "shell.h"
 
 /**
- * clear_info - Clears the fields in the info_t struct
- * @info: Pointer to the info_t struct
+ * clear_info - initializes info_t struct
+ * @info: struct address
  */
 void clear_info(info_t *info)
 {
@@ -13,9 +13,9 @@ void clear_info(info_t *info)
 }
 
 /**
- * set_info - Sets the fields in the info_t struct
- * @info: Pointer to the info_t struct
- * @av: Array of command line arguments
+ * set_info - initializes info_t struct
+ * @info: struct address
+ * @av: argument vector
  */
 void set_info(info_t *info, char **av)
 {
@@ -27,6 +27,7 @@ void set_info(info_t *info, char **av)
 		info->argv = strtow(info->arg, " \t");
 		if (!info->argv)
 		{
+
 			info->argv = malloc(sizeof(char *) * 2);
 			if (info->argv)
 			{
@@ -44,9 +45,9 @@ void set_info(info_t *info, char **av)
 }
 
 /**
- * free_info - Frees the allocated memory in the info_t struct
- * @info: Pointer to the info_t struct
- * @all: Flag indicating whether to free all resources
+ * free_info - frees info_t struct fields
+ * @info: struct address
+ * @all: true if freeing all fields
  */
 void free_info(info_t *info, int all)
 {
@@ -63,8 +64,8 @@ void free_info(info_t *info, int all)
 			free_list(&(info->history));
 		if (info->alias)
 			free_list(&(info->alias));
-		ffree(info->environ_environ);
-		info->environ_environ = NULL;
+		ffree(info->environ);
+			info->environ = NULL;
 		bfree((void **)info->cmd_buf);
 		if (info->readfd > 2)
 			close(info->readfd);
