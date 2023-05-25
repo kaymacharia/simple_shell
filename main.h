@@ -34,7 +34,7 @@
 #define HIST_FILE	".simple_shell_history"
 #define HIST_MAX	4096
 
-extern char **environ;
+extern char **simple_shell_environ;
 
 
 /**
@@ -61,11 +61,11 @@ typedef struct liststr
  *@err_num: the error code for exit()s
  *@linecount_flag: if on count this line of input
  *@fname: the program filename
- *@env: linked list local copy of environ
- *@environ: custom modified copy of environ from LL env
+ *@env: linked list local copy of simple_shell_environ
+ *@simple_shell_environ: custom modified copy of simple_shell_environ from LL env
  *@history: the history node
  *@alias: the alias node
- *@env_changed: on if environ was changed
+ *@env_changed: on if simple_shell_environ was changed
  *@status: the return status of the last exec'd command
  *@cmd_buf: address of pointer to cmd_buf, on if chaining
  *@cmd_buf_type: CMD_type ||, &&, ;
@@ -85,7 +85,7 @@ typedef struct passinfo
 	list_t *env;
 	list_t *history;
 	list_t *alias;
-	char **environ;
+	char **simple_shell_environ;
 	int env_changed;
 	int status;
 

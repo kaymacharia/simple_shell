@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "shell.h"
+#include "main.h"
 
 /**
  * bfree - frees a pointer and NULLs the address

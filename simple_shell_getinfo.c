@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * clear_info - Clears the fields in the info_t struct
@@ -63,8 +63,8 @@ void free_info(info_t *info, int all)
 			free_list(&(info->history));
 		if (info->alias)
 			free_list(&(info->alias));
-		ffree(info->environ);
-		info->environ = NULL;
+		ffree(info->simple_shell_environ);
+		info->simple_shell_environ = NULL;
 		bfree((void **)info->cmd_buf);
 		if (info->readfd > 2)
 			close(info->readfd);

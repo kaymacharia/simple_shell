@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "main.h"
 
 /**
  * _myenv - Handles the "env" built-in command
@@ -85,8 +85,8 @@ int populate_env_list(info_t *info)
 	list_t *node = NULL;
 	size_t i;
 
-	for (i = 0; environ[i]; i++)
-		add_node_end(&node, environ[i], 0);
+	for (i = 0; simple_shell_environ[i]; i++)
+		add_node_end(&node, simple_shell_environ[i], 0);
 	info->env = node;
 	return (0);
 }
