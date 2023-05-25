@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 /**
  * get_environ - Retrieves the environment variables as an array of strings
@@ -8,13 +8,13 @@
  */
 char **get_environ(info_t *info)
 {
-	if (!info->simple_shell_environ || info->env_changed)
+	if (!info->environ_environ || info->env_changed)
 	{
-		info->simple_shell_environ = list_to_strings(info->env);
+		info->environ_environ = list_to_strings(info->env);
 		info->env_changed = 0;
 	}
 
-	return (info->simple_shell_environ);
+	return (info->environ_environ);
 }
 
 /**

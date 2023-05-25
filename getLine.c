@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 /**
  * input_buf - Reads input from stdin and stores it in a buffer

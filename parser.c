@@ -1,4 +1,4 @@
-#include "main.h"
+#include "shell.h"
 
 /**
  * is_cmd - Checks if a given path corresponds to a valid command file
