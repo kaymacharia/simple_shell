@@ -1,10 +1,10 @@
 #include "shell.h"
 
 /**
- * _erratoi - Converts a string to an integer
- * @s: The string to convert
- *
- * Return: The converted integer, or -1 on error
+ * _erratoi - converts the string to an integer
+ * @s: the string to be converted
+ * Return: 0 which is if no numbers in the string or converted number 
+ *       otherwise -1 on error
  */
 int _erratoi(char *s)
 {
@@ -12,8 +12,8 @@ int _erratoi(char *s)
 	unsigned long int result = 0;
 
 	if (*s == '+')
-		s++; /* TODO: why does this make main return 255? */
-	for (i = 0; s[i] != '\0'; i++)
+		s++;  /* TODO: why does this make main return 255? */
+	for (i = 0;  s[i] != '\0'; i++)
 	{
 		if (s[i] >= '0' && s[i] <= '9')
 		{
@@ -29,9 +29,11 @@ int _erratoi(char *s)
 }
 
 /**
- * print_error - Prints an error message
- * @info: The info_t structure containing relevant information
- * @estr: The error message to print
+ * print_error - outputs an error message
+ * @info: the parameter and the return info structure
+ * @estr: string has specified error types
+ * Return: 0 if no numbers in string and also converted number otherwise
+ *        -1 on the error
  */
 void print_error(info_t *info, char *estr)
 {
@@ -45,11 +47,11 @@ void print_error(info_t *info, char *estr)
 }
 
 /**
- * print_d - Prints an integer to a file descriptor
- * @input: The integer to print
- * @fd: The file descriptor to write to
+ * print_d - the functions prints (integer) number which is (base 10)
+ * @input: the input
+ * @fd: the filedescriptor to write to
  *
- * Return: The number of characters written
+ * Return: number of characters printed
  */
 int print_d(int input, int fd)
 {
@@ -84,12 +86,12 @@ int print_d(int input, int fd)
 }
 
 /**
- * convert_number - Converts a number to a string representation
- * @num: The number to convert
- * @base: The base to use for conversion
- * @flags: Conversion flags
+ * convert_number - converter function, a clone of its own number
+ * @num: number
+ * @base: base
+ * @flags: argument flags
  *
- * Return: A pointer to the converted string
+ * Return: string
  */
 char *convert_number(long int num, int base, int flags)
 {
@@ -103,12 +105,13 @@ char *convert_number(long int num, int base, int flags)
 	{
 		n = -num;
 		sign = '-';
+
 	}
 	array = flags & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
 	ptr = &buffer[49];
 	*ptr = '\0';
 
-	do {
+	do	{
 		*--ptr = array[n % base];
 		n /= base;
 	} while (n != 0);
@@ -119,8 +122,10 @@ char *convert_number(long int num, int base, int flags)
 }
 
 /**
- * remove_comments - Removes comments from a string
- * @buf: The string to remove comments from
+ * remove_comments - the function gets the first instance of '#' with '\0'
+ * @buf: talks to the string being modified
+ *
+ * Return: Always 0;
  */
 void remove_comments(char *buf)
 {

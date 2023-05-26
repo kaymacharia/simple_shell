@@ -1,87 +1,83 @@
 #include "shell.h"
 
 /**
- * _strcpy - copies a string
- * @dest: the destination
- * @src: the source
- *
- * Return: pointer to destination
+ * _strcpy - string
+ * @dest: destination
+ * @src: source
+ * Return: points destination
  */
 char *_strcpy(char *dest, char *src)
 {
-	int i = 0;
+	int count = 0;
 
 	if (dest == src || src == 0)
 		return (dest);
-	while (src[i])
+	while (src[count])
 	{
-		dest[i] = src[i];
-		i++;
+		dest[count] = src[count];
+		count++;
 	}
-	dest[i] = 0;
+	dest[count] = 0;
 	return (dest);
 }
 
 /**
- * _strdup - duplicates a string
- * @str: the string to duplicate
- *
- * Return: pointer to the duplicated string
+ * _strdup - duplicates string
+ * @str: the duplicate
+ * Return: duplicated string
  */
 char *_strdup(const char *str)
 {
-	int length = 0;
+	int width = 0;
 	char *ret;
 
 	if (str == NULL)
 		return (NULL);
 	while (*str++)
-		length++;
-	ret = malloc(sizeof(char) * (length + 1));
+		width++;
+	ret = malloc(sizeof(char) * (width + 1));
 	if (!ret)
 		return (NULL);
-	for (length++; length--;)
-		ret[length] = *--str;
+	for (width++; width--;)
+		ret[width] = *--str;
 	return (ret);
 }
 
 /**
- *_puts - prints an input string
- *@str: the string to be printed
- *
- * Return: Nothing
+ *_puts - input string
+ *@str: printed 
+ *Return: Nothing
  */
 void _puts(char *str)
 {
-	int i = 0;
+	int long = 0;
 
 	if (!str)
 		return;
-	while (str[i] != '\0')
+	while (str[long] != '\0')
 	{
-		_putchar(str[i]);
+		_putchar(str[long]);
 		i++;
 	}
 }
 
 /**
- * _putchar - writes the character c to stdout
- * @c: The character to print
- *
- * Return: On success 1.
+ * _putchar - writes the character c to the stdout
+ * @c:print
+ * Return: success
  * On error, -1 is returned, and errno is set appropriately.
  */
 int _putchar(char c)
 {
-	static int i;
+	static int length;
 	static char buf[WRITE_BUF_SIZE];
 
-	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
+	if (c == BUF_FLUSH || length >= WRITE_BUF_SIZE)
 	{
-		write(1, buf, i);
-		i = 0;
+		write(1, buf, length);
+		count= 0;
 	}
 	if (c != BUF_FLUSH)
-		buf[i++] = c;
+		buf[length++] = c;
 	return (1);
 }
