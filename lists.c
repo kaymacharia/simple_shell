@@ -2,22 +2,22 @@
 
 /**
  * add_node - Adds a new node at the beginning of the list
- * @head: Pointer to the head of the list
+ * @head_p: Pointer to the head of the list
  * @str: String to be added as a new node
- * @num: Line number of the node
+ * @number: Line number of the node
  * Return: Pointer to the newly added node, or NULL on failure
  */
-list_t *add_node(list_t **head, const char *str, int num)
+list_t *add_node(list_t **head_p, const char *str, int number)
 {
 	list_t *new_head;
 
-	if (!head)
+	if (!head_p)
 		return (NULL);
 	new_head = malloc(sizeof(list_t));
 	if (!new_head)
 		return (NULL);
 	_memset((void *)new_head, 0, sizeof(list_t));
-	new_head->num = num;
+	new_head->number = number;
 	if (str)
 	{
 		new_head->str = _strdup(str);
@@ -27,31 +27,31 @@ list_t *add_node(list_t **head, const char *str, int num)
 			return (NULL);
 		}
 	}
-	new_head->next = *head;
-	*head = new_head;
+	new_head->next = *head_p;
+	*head_p = new_head;
 	return (new_head);
 }
 
 /**
  * add_node_end - Adds a new node at the end of the list
- * @head: Pointer to the head of the list
+ * @head_p: Pointer to the head of the list
  * @str: String to be added as a new node
- * @num: Line number of the node
+ * @number: Line number of the node
  * Return: Pointer to the newly added node, or NULL on failure
  */
-list_t *add_node_end(list_t **head, const char *str, int num)
+list_t *add_node_end(list_t **head_p, const char *str, int number)
 {
 	list_t *new_node, *node;
 
-	if (!head)
+	if (!head_p)
 		return (NULL);
 
-	node = *head;
+	node = *head_p;
 	new_node = malloc(sizeof(list_t));
 	if (!new_node)
 		return (NULL);
 	_memset((void *)new_node, 0, sizeof(list_t));
-	new_node->num = num;
+	new_node->number = number;
 	if (str)
 	{
 		new_node->str = _strdup(str);
@@ -68,7 +68,7 @@ list_t *add_node_end(list_t **head, const char *str, int num)
 		node->next = new_node;
 	}
 	else
-		*head = new_node;
+		*head_p = new_node;
 	return (new_node);
 }
 
@@ -93,27 +93,27 @@ size_t print_list_str(const list_t *h)
 
 /**
  * delete_node_at_index - Deletes a node at a given index
- * @head: Pointer to the head of the list
+ * @head_p: Pointer to the head of the list
  * @index: Index of the node to be deleted
  * Return: 1 if successful, 0 if index is out of range or list is empty
  */
-int delete_node_at_index(list_t **head, unsigned int index)
+int delete_node_at_index(list_t **head_p, unsigned int index)
 {
 	list_t *node, *prev_node;
 	unsigned int i = 0;
 
-	if (!head || !*head)
+	if (!head_p || !*head_p)
 		return (0);
 
 	if (!index)
 	{
-		node = *head;
-		*head = (*head)->next;
+		node = *head_p;
+		*head_p = (*head_p)->next;
 		free(node->str);
 		free(node);
 		return (1);
 	}
-	node = *head;
+	node = *head_p;
 	while (node)
 	{
 		if (i == index)
@@ -132,16 +132,16 @@ int delete_node_at_index(list_t **head, unsigned int index)
 
 /**
  * free_list - Frees the memory allocated for the list
- * @head_ptr: Pointer to the head of the list
+ * @head_p_ptr: Pointer to the head of the list
  */
 void free_list(list_t **head_ptr)
 {
-	list_t *node, *next_node, *head;
+	list_t *node, *next_node, *head_p;
 
 	if (!head_ptr || !*head_ptr)
 		return;
-	head = *head_ptr;
-	node = head;
+	head_p = *head_ptr;
+	node = head_p;
 	while (node)
 	{
 		next_node = node->next;

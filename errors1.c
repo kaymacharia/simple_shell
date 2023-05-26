@@ -85,23 +85,23 @@ int print_d(int input, int fd)
 
 /**
  * convert_number - Converts a number to a string representation
- * @num: The number to convert
+ * @number: The number to convert
  * @base: The base to use for conversion
  * @flags: Conversion flags
  *
  * Return: A pointer to the converted string
  */
-char *convert_number(long int num, int base, int flags)
+char *convert_number(long int number, int base, int flags)
 {
 	static char *array;
 	static char buffer[50];
 	char sign = 0;
 	char *ptr;
-	unsigned long n = num;
+	unsigned long n = number;
 
-	if (!(flags & CONVERT_UNSIGNED) && num < 0)
+	if (!(flags & CONVERT_UNSIGNED) && number < 0)
 	{
-		n = -num;
+		n = -number;
 		sign = '-';
 	}
 	array = flags & CONVERT_LOWERCASE ? "0123456789abcdef" : "0123456789ABCDEF";
