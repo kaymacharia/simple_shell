@@ -47,17 +47,17 @@ void print_error(info_t *info, char *estr)
 /**
  * print_d - Prints an integer to a file descriptor
  * @input: The integer to print
- * @fd: The file descriptor to write to
+ * @f_d: The file descriptor to write to
  *
  * Return: The number of characters written
  */
-int print_d(int input, int fd)
+int print_d(int input, int f_d)
 {
 	int (*__putchar)(char) = _putchar;
 	int i, count = 0;
 	unsigned int _abs_, current;
 
-	if (fd == STDERR_FILENO)
+	if (f_d == STDERR_FILENO)
 		__putchar = _eputchar;
 	if (input < 0)
 	{

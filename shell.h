@@ -69,7 +69,7 @@ typedef struct liststr
  *@status: the return status of the last exec'd command
  *@cmd_buf: address of pointer to cmd_buf, on if chaining
  *@cmd_buf_type: CMD_type ||, &&, ;
- *@readfd: the fd from which to read line input
+ *@readfd: the f_d from which to read line input
  *@histcount: the history line number count
  */
 typedef struct passinfo
@@ -128,8 +128,8 @@ int loophsh(char **);
 /* toem_errors.c */
 void _eputs(char *);
 int _eputchar(char);
-int _putfd(char c, int fd);
-int _putsfd(char *str, int fd);
+int _putfd(char c, int f_d);
+int _putsfd(char *str, int f_d);
 
 /* toem_string.c */
 int _strlen(char *);
