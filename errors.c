@@ -41,18 +41,18 @@ int _eputchar(char c)
 /**
  * _putfd - Writes a character to a file descriptor
  * @c: The character to write
- * @fd: The file descriptor to write to
+ * @f_d: The file descriptor to write to
  *
  * Return: 1 on success
  */
-int _putfd(char c, int fd)
+int _putfd(char c, int f_d)
 {
 	static int i;
 	static char buf[WRITE_BUF_SIZE];
 
 	if (c == BUF_FLUSH || i >= WRITE_BUF_SIZE)
 	{
-		write(fd, buf, i);
+		write(f_d, buf, i);
 		i = 0;
 	}
 	if (c != BUF_FLUSH)
@@ -63,11 +63,11 @@ int _putfd(char c, int fd)
 /**
  * _putsfd - Writes a string to a file descriptor
  * @str: The string to write
- * @fd: The file descriptor to write to
+ * @f_d: The file descriptor to write to
  *
  * Return: The number of characters written
  */
-int _putsfd(char *str, int fd)
+int _putsfd(char *str, int f_d)
 {
 	int i = 0;
 
@@ -75,7 +75,7 @@ int _putsfd(char *str, int fd)
 		return (0);
 	while (*str)
 	{
-		i += _putfd(*str++, fd);
+		i += _putfd(*str++, f_d);
 	}
 	return (i);
 }

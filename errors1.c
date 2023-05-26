@@ -47,19 +47,25 @@ void print_error(info_t *info, char *estr)
 }
 
 /**
+<<<<<<< HEAD
  * print_d - the functions prints (integer) number which is (base 10)
  * @input: the input
  * @fd: the filedescriptor to write to
+=======
+ * print_d - Prints an integer to a file descriptor
+ * @input: The integer to print
+ * @f_d: The file descriptor to write to
+>>>>>>> b4f67ad8ff710598fef74eb3f125ad24982b3ec7
  *
  * Return: number of characters printed
  */
-int print_d(int input, int fd)
+int print_d(int input, int f_d)
 {
 	int (*__putchar)(char) = _putchar;
 	int i, count = 0;
 	unsigned int _abs_, current;
 
-	if (fd == STDERR_FILENO)
+	if (f_d == STDERR_FILENO)
 		__putchar = _eputchar;
 	if (input < 0)
 	{
@@ -86,24 +92,31 @@ int print_d(int input, int fd)
 }
 
 /**
+<<<<<<< HEAD
  * convert_number - converter function, a clone of its own number
  * @num: number
  * @base: base
  * @flags: argument flags
+=======
+ * convert_number - Converts a number to a string representation
+ * @number: The number to convert
+ * @base: The base to use for conversion
+ * @flags: Conversion flags
+>>>>>>> b4f67ad8ff710598fef74eb3f125ad24982b3ec7
  *
  * Return: string
  */
-char *convert_number(long int num, int base, int flags)
+char *convert_number(long int number, int base, int flags)
 {
 	static char *array;
 	static char buffer[50];
 	char sign = 0;
 	char *ptr;
-	unsigned long n = num;
+	unsigned long n = number;
 
-	if (!(flags & CONVERT_UNSIGNED) && num < 0)
+	if (!(flags & CONVERT_UNSIGNED) && number < 0)
 	{
-		n = -num;
+		n = -number;
 		sign = '-';
 
 	}
